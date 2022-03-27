@@ -48,7 +48,14 @@ const NavDrawer = ({ children }) => {
                 <span className="material-icons">home</span>
                 Home
               </NavLink>
-              <NavLink className="side-nav-item" to="/">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "side-nav-item side-nav-item-active"
+                    : "side-nav-item"
+                }
+                to="/playlists"
+              >
                 <span className="material-icons">playlist_play</span>
                 Playlists
               </NavLink>

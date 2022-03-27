@@ -1,6 +1,7 @@
 .video-grid {
   gap: 1rem;
   height: initial;
+  padding-top: 0.5rem;
 }
 .video-card {
   padding-bottom: 1rem;
@@ -9,7 +10,6 @@
 }
 
 .filters {
-  padding: 0.5rem 0;
   gap: 0.5rem;
   display: flex;
   flex-wrap: wrap;
