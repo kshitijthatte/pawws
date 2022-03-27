@@ -23,7 +23,12 @@ body {
 }
 
 .side-nav-item-active {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+.side-nav-item-active:hover {
   background-color: var(--primary-hover);
+  color: var(--white);
 }
 
 .btn-round {
@@ -37,12 +42,13 @@ body {
   filter: initial;
 }
 
-.nav-title {
+.title-w-logo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin: 0 auto;
 }
-.nav-title .nav-logo {
+.title-w-logo .nav-logo {
   width: 2rem;
 }
 

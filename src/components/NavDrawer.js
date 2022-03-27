@@ -18,7 +18,7 @@ const NavDrawer = ({ children }) => {
           >
             menu
           </button>
-          <Link className="nav-title" to="/">
+          <Link className="nav-title title-w-logo" to="/">
             <img src="/assets/logo.svg" className="nav-logo" />
             pawws
           </Link>

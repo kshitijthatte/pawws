@@ -8,10 +8,30 @@
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
-.category-filter {
+.filters {
   padding: 0.5rem 0;
+  gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category-filter {
   display: flex;
   gap: 0.5rem;
+}
+
+.dropdown {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+.dropdown option {
+  font-size: 1.2em;
 }
 
 @media only screen and (max-width: 900px) {
