@@ -1,4 +1,54 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+@import url("https://iceberg-ui.netlify.app/styles.css");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+:root {
+  --primary-color: #ef8172;
+  --primary-hover: #e49c93;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.main {
+  padding: 0 1rem 1rem;
+}
+.main a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.drawer-frame {
+  height: calc(100vh - 4.2rem);
+}
+
+.side-nav-item-active {
+  background-color: var(--primary-hover);
+}
+
+.btn-round {
+  min-width: 3.5rem;
+}
+.outline-primary:hover {
+  background-color: var(--primary-hover);
+  color: #fff;
+}
+.btn:hover {
+  filter: initial;
+}
+
+.nav-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nav-title .nav-logo {
+  width: 2rem;
+}
+
+@media only screen and (max-width: 650px) {
+  .drawer {
+    display: none;
+    flex-basis: 13rem;
+  }
 }
