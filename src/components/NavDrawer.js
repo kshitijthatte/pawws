@@ -59,11 +59,25 @@ const NavDrawer = ({ children }) => {
                 <span className="material-icons">playlist_play</span>
                 Playlists
               </NavLink>
-              <NavLink className="side-nav-item" to="/">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "side-nav-item side-nav-item-active"
+                    : "side-nav-item"
+                }
+                to="/liked"
+              >
                 <span className="material-icons">thumb_up</span>
                 Liked videos
               </NavLink>
-              <NavLink className="side-nav-item" to="/">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "side-nav-item side-nav-item-active"
+                    : "side-nav-item"
+                }
+                to="/watchlater"
+              >
                 <span className="material-icons">watch_later</span>
                 Watch Later
               </NavLink>
