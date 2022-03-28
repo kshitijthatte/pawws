@@ -4,6 +4,7 @@
 :root {
   --primary-color: #ef8172;
   --primary-hover: #e49c93;
+  --secondary-hover: #e8e8e8;
 }
 
 body {
