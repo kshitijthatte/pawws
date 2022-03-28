@@ -1,0 +1,36 @@
+.authentication-container {
+  min-height: calc(100vh - 6rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.authentication-container .card {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  padding: 1rem;
+  min-width: 16rem;
+  width: 40%;
+  max-width: 28rem;
+}
+
+.input-group > * {
+  margin-bottom: 1rem;
+}
+.input-group > *:last-child {
+  margin-bottom: 0;
+}
+
+.name-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.title-w-logo.text-lg {
+  color: var(--primary-color);
+}
+
+.title-w-logo.text-lg .nav-logo {
+  width: 4rem;
+}

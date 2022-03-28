@@ -1,10 +1,14 @@
 import "./styles.css";
+import NavDrawer from "./components/NavDrawer";
+import AppRoutes from "./components/AppRoutes";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Welcome to pawws</h1>
-    </div>
+    <>
+      <NavDrawer>
+        <AppRoutes />
+      </NavDrawer>
+    </>
   );
 }
 

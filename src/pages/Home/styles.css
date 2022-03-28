@@ -1,0 +1,54 @@
+.video-grid {
+  gap: 1rem;
+  height: initial;
+  padding-top: 0.5rem;
+}
+.video-card {
+  padding-bottom: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.filters {
+  gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category-filter {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dropdown {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+.dropdown option {
+  font-size: 1.2em;
+}
+
+@media only screen and (max-width: 900px) {
+  .video-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .video-card {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 450px) {
+  .video-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

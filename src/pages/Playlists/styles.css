@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.video-card-btn {
+  width: fit-content;
+  padding-left: 1rem;
+}
+.video-card-btn:hover {
+  background-color: initial;
+  font-weight: bold;
+}
