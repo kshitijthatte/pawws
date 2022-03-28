@@ -30,7 +30,6 @@ const Signup = () => {
           inputValues.email,
           inputValues.password
         );
-        console.log(response);
         if (response.status === 201) {
           localStorage.setItem("AUTH_TOKEN", response.data.encodedToken);
           localStorage.setItem(
