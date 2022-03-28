@@ -6,7 +6,9 @@ function App() {
   return (
     <>
       <NavDrawer>
-        <AppRoutes />
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
       </NavDrawer>
     </>
   );
