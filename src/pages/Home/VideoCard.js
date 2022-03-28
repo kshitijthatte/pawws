@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 
-const VideoCard = () => {
+const VideoCard = ({ video }) => {
+  const { title, thumbnail, user, views } = video;
   return (
     <Link className="card video-card" to="/">
-      <img className="card-img" src="https://picsum.photos/300/200" />
-      <div className="card-title">Video Title</div>
-      <div className="card-subtitle">by Video Publisher</div>
-      <div className="card-subtitle">301 views</div>
+      <img className="card-img" src={thumbnail} />
+      <div className="card-title">
+        {title.length <= 18 ? title : title.slice(0, 18) + "..."}
+      </div>
+      <div className="card-subtitle">by {user}</div>
+      <div className="card-subtitle">{views} views</div>
     </Link>
   );
 };
