@@ -77,10 +77,10 @@ export const videos = [
   },
   {
     _id: uuid(),
-    title: "Man stroking his dog",
+    title: "Man with his dog",
     thumbnail:
       "https://image.mux.com/kfdHHKtzJ4HmrQPxbZ66ub2G2vPrHpR01/thumbnail.jpg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InQ5UHZucm9ZY0hQNjhYSmlRQnRHTEVVSkVSSXJ0UXhKIn0.eyJ3aWR0aCI6NjQwLCJ0aW1lIjowLCJleHAiOjMxNzE5MjI5MTMyNSwiYXVkIjoidCIsInN1YiI6ImtmZEhIS3R6SjRIbXJRUHhiWjY2dWIyRzJ2UHJIcFIwMSJ9.DyoPrlpntFPBZiplsw5cDYQUq01SH8Pbtq9tjVyQjNcuYhB2fHgXAkNKR25agcx24b4-wZZPUMHNFPfvzNfKZu1Jg3o0YEdy3uC65o-hE1r0g05E4dVQxySec68Wxv5FF6-JMdc6neq8UDtJ2kvemjpaekqiVzm14seAZBAMgcAWqx1mWQOCMLSdO-H6Tywaroj5fvcfklg1QrhXVBw9AU9mP6nlDLF7KT9wlcWVJvRP2aSmUikx5I_EuWovK2i1kLtC4-YZSKLoazOgjd0CX3Z-N-Un4E7oTiipT4pJw0cAdJG2izu-u-XgXCjTHc-QVRIaYTHC_FE0CE1uCHgE4g",
-    description: "Still shot of a man stroking his dog. ",
+    description: "Still shot of a man with his dog. ",
     views: "1259",
     user: "Denver",
     category: "Dog",
