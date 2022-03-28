@@ -1,8 +1,15 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/authContext";
+import { logoutService } from "../services/authServices";
 
 const NavDrawer = ({ children }) => {
   const [drawerDisplay, setDrawerDisplay] = useState("");
+  const {
+    auth: { isAuthenticated, user },
+    setAuth,
+  } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -27,10 +34,34 @@ const NavDrawer = ({ children }) => {
           <Link className="btn btn-primary btn-sm btn-icon" to="/">
             <span className="material-icons"> notifications </span>
           </Link>
-          <Link className="btn btn-primary btn-sm btn-icon" to="/login">
-            <span className="material-icons"> person </span>
-            Log In
-          </Link>
+          {!isAuthenticated && (
+            <NavLink to="/login" className="btn btn-primary btn-sm btn-icon">
+              <span className="material-icons"> person </span>
+              Login
+            </NavLink>
+          )}
+          {isAuthenticated && (
+            <>
+              <NavLink to="/user" className="btn btn-primary btn-sm btn-icon">
+                <span className="material-icons"> person </span>
+                Hi, {user.firstName}
+              </NavLink>
+              <button
+                className="btn btn-primary btn-sm btn-icon"
+                onClick={() => {
+                  logoutService();
+                  setAuth({
+                    isAuthenticated: false,
+                    user: "",
+                    token: "",
+                  });
+                  navigate("/");
+                }}
+              >
+                <span className="material-icons"> logout </span>
+              </button>
+            </>
+          )}
         </div>
       </nav>
       <div className="drawer-frame">
