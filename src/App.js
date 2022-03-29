@@ -1,12 +1,15 @@
 import "./styles.css";
 import NavDrawer from "./components/NavDrawer";
 import AppRoutes from "./components/AppRoutes";
+import { LikesProvider } from "./contexts/likesContext";
 
 function App() {
   return (
     <>
       <NavDrawer>
-        <AppRoutes />
+        <LikesProvider>
+          <AppRoutes />
+        </LikesProvider>
       </NavDrawer>
     </>
   );
