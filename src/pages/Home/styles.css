@@ -9,6 +9,62 @@
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
+.video-card .card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.video-card .card-header .card-menu-icon {
+  padding: 0.2rem;
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+  background-color: inherit;
+}
+
+.video-card .card-header .card-menu-icon:hover {
+  background-color: var(--secondary-hover);
+}
+
+.video-card .card-header .card-title {
+  padding: 0;
+}
+
+.menu-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-dropdown-content {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  min-width: 11rem;
+  right: 0;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.menu-dropdown-content .menu-dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: var(--white);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.menu-dropdown-content .menu-dropdown-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
 .filters {
   gap: 0.5rem;
   display: flex;
