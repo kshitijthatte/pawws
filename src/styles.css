@@ -43,6 +43,10 @@ body {
   filter: initial;
 }
 
+.text-primary {
+  color: var(--primary-color);
+}
+
 .title-w-logo {
   display: flex;
   align-items: center;

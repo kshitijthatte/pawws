@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useState, useEffect, createContext, useContext } from "react";
+import { addLikes, getLikes, removeLikes } from "../services/likesServices";
 import { useAuth } from "./authContext";
 
 const LikesContext = createContext();
@@ -16,13 +16,11 @@ const LikesProvider = ({ children }) => {
     if (isAuthenticated) {
       (async () => {
         try {
-          const response = await axios.get("/api/user/likes", {
-            headers: {
-              authorization: token,
-            },
-          });
-          const likes = response.data.likes;
-          setLikedVideos(likes);
+          const response = await getLikes(token);
+          if (response.status === 200) {
+            const likes = response.data.likes;
+            setLikedVideos(likes);
+          }
         } catch (error) {
           console.error("ERROR", error);
         }
@@ -31,8 +29,36 @@ const LikesProvider = ({ children }) => {
       setLikedVideos([]);
     }
   }, [isAuthenticated, token]);
+
+  const addToLikedVideos = async video => {
+    try {
+      const response = await addLikes(token, video);
+      setLikedVideos(response.data.likes);
+    } catch (error) {
+      console.error("ERROR", error);
+      return error;
+    }
+  };
+
+  const removeLikedVideos = async video => {
+    try {
+      const response = await removeLikes(token, video);
+      setLikedVideos(response.data.likes);
+    } catch (error) {
+      console.error("ERROR", error);
+      return error;
+    }
+  };
+
   return (
-    <LikesContext.Provider value={{ likedVideos, setLikedVideos }}>
+    <LikesContext.Provider
+      value={{
+        likedVideos,
+        setLikedVideos,
+        addToLikedVideos,
+        removeLikedVideos,
+      }}
+    >
       {children}
     </LikesContext.Provider>
   );

@@ -1,10 +1,8 @@
 import HorizontalVideoCard from "../SinglePlaylist/HorizontalVideoCard";
-import { useAuth } from "../../contexts/authContext";
 import { useLikes } from "../../contexts/likesContext";
 
 const LikedVideos = () => {
   const { likedVideos } = useLikes();
-  console.log(likedVideos);
   return (
     <>
       <header className="header text-lg">
@@ -14,7 +12,11 @@ const LikedVideos = () => {
       <p className="text-sm">{likedVideos.length} videos</p>
       <div className="playist-video-container">
         {likedVideos.map(video => (
-          <HorizontalVideoCard />
+          <HorizontalVideoCard
+            key={video._id}
+            playlistTitle="Liked Videos"
+            video={video}
+          />
         ))}
       </div>
     </>
