@@ -1,3 +1,4 @@
+import "../SinglePlaylist/styles.css";
 import HorizontalVideoCard from "../SinglePlaylist/HorizontalVideoCard";
 import { useLikes } from "../../contexts/likesContext";
 

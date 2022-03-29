@@ -8,11 +8,7 @@ const SinglePlaylistPage = ({ playlistTitle }) => {
     <>
       <header className="header text-lg">
         <span className="material-icons text-lg">
-          {playlistTitle === "Liked Videos"
-            ? "thumb_up"
-            : playlistTitle === "Watch Later"
-            ? "watch_later"
-            : "playlist_play"}
+          playlist_play
         </span>
         {playlistTitle}
       </header>
