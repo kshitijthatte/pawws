@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
+import PrivateRoutes from "./PrivateRoutes";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Playlists from "../pages/Playlists";
-import SinglePlaylist from "../pages/SinglePlaylist";
-import PrivateRoutes from "./PrivateRoutes";
 import LikedVideos from "../pages/LikedVideos";
+import WatchLater from "../pages/WatchLater";
 
 const AppRoutes = () => {
   return (
@@ -16,10 +16,7 @@ const AppRoutes = () => {
       <Route path="/" element={<PrivateRoutes />}>
         <Route path="/playlists" element={<Playlists />} />
         <Route path="/liked" element={<LikedVideos />} />
-        <Route
-          path="/watchlater"
-          element={<SinglePlaylist playlistTitle="Watch Later" />}
-        />
+        <Route path="/watchlater" element={<WatchLater />} />
       </Route>
     </Routes>
   );

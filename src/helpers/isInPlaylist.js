@@ -1,3 +1,3 @@
 export const isInPlaylist = (video, playlistName) => {
-  return playlistName.find(playlistVideo => playlistVideo.id === video.id);
+  return playlistName?.find(playlistVideo => playlistVideo.id === video.id);
 };

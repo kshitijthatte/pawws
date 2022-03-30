@@ -1,13 +1,17 @@
 import { useLikes } from "../../contexts/likesContext";
+import { useWatchlater } from "../../contexts/watchlaterContext";
 
 const HorizontalVideoCard = ({ playlistTitle, video }) => {
   const { title, thumbnail, user } = video;
   const { removeLikedVideos } = useLikes();
+  const { removeFromWatchlater } = useWatchlater();
 
   const removeVideoHandler = video => {
     switch (playlistTitle) {
       case "Liked Videos":
         return removeLikedVideos(video);
+      case "Watch Later":
+        return removeFromWatchlater(video);
       default:
         return;
     }

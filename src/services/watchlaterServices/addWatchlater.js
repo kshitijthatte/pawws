@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const addLikes = (token, video) => {
+export const addWatchlater = (token, video) => {
   return axios.post(
-    "/api/user/likes",
+    "/api/user/watchlater",
     { video },
     { headers: { authorization: token } }
   );

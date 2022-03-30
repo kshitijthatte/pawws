@@ -2,13 +2,16 @@ import "./styles.css";
 import NavDrawer from "./components/NavDrawer";
 import AppRoutes from "./components/AppRoutes";
 import { LikesProvider } from "./contexts/likesContext";
+import { WatchlaterProvider } from "./contexts/watchlaterContext";
 
 function App() {
   return (
     <>
       <NavDrawer>
         <LikesProvider>
-          <AppRoutes />
+          <WatchlaterProvider>
+            <AppRoutes />
+          </WatchlaterProvider>
         </LikesProvider>
       </NavDrawer>
     </>
