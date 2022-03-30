@@ -27,7 +27,6 @@ const WatchlaterProvider = ({ children }) => {
           }
         } catch (error) {
           console.error("ERROR", error);
-          console.log(error.message);
         }
       })();
     } else {
