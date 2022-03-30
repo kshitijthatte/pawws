@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { React, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 import { logoutService } from "../services/authServices";
@@ -48,6 +48,7 @@ const NavDrawer = ({ children }) => {
               </NavLink>
               <button
                 className="btn btn-primary btn-sm btn-icon"
+                title="Log Out"
                 onClick={() => {
                   logoutService();
                   setAuth({

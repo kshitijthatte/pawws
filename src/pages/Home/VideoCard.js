@@ -22,8 +22,8 @@ const VideoCard = ({ video }) => {
     <div className="card video-card">
       <img className="card-img" src={thumbnail} />
       <div className="card-header">
-        <div className="card-title">
-          {title.length <= 15 ? title : title.slice(0, 12) + "..."}
+        <div className="card-title" title={title}>
+          {title}
         </div>
         <div className="menu-dropdown">
           <button

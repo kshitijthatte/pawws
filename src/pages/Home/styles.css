@@ -16,6 +16,17 @@
   padding: 0 1rem;
 }
 
+.video-card .card-header .card-title {
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+}
+
+.video-card .card-img {
+  height: 100%;
+}
+
 .video-card .card-header .card-menu-icon {
   padding: 0.2rem;
   border: none;
