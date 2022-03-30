@@ -1,5 +1,5 @@
 const logoutService = () => {
-  localStorage.removeItem("WB_USER");
+  localStorage.removeItem("PAWWS_USER");
   localStorage.removeItem("AUTH_TOKEN");
 };
 
