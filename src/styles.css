@@ -19,6 +19,11 @@ body {
   text-decoration: inherit;
 }
 
+.divider {
+  border: none;
+  border-bottom: 1px solid var(--light-grey);
+}
+
 .drawer-frame {
   height: calc(100vh - 4.2rem);
 }

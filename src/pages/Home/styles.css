@@ -101,6 +101,37 @@
   font-size: 1.2em;
 }
 
+.modal-btn {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: inherit;
+  padding-top: 0.5rem;
+  cursor: pointer;
+}
+
+.modal-title {
+  margin-bottom: 0.5rem;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-actions {
+  margin-top: 0;
+}
+
+.modal-input-checkbox {
+  padding-bottom: 0.5rem;
+}
+
+.modal-input-checkbox label {
+  margin-left: 0.5rem;
+}
+
 @media only screen and (max-width: 900px) {
   .video-grid {
     grid-template-columns: repeat(3, 1fr);
