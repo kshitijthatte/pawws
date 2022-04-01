@@ -13,3 +13,7 @@
   background-color: initial;
   font-weight: bold;
 }
+
+.modal .video-card-btn {
+  padding-bottom: 0.3rem;
+}

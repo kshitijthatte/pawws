@@ -95,8 +95,12 @@ const VideoCard = ({ video }) => {
             <button
               className="menu-dropdown-btn"
               onClick={() => {
-                setIsPlaylistModalOpen(true);
-                setIsDropdownOpen(false);
+                if (isAuthenticated) {
+                  setIsPlaylistModalOpen(true);
+                  setIsDropdownOpen(false);
+                } else {
+                  navigate("/login");
+                }
               }}
             >
               <span className="material-icons">playlist_add</span>
@@ -104,7 +108,10 @@ const VideoCard = ({ video }) => {
             </button>
           </div>
         </div>
-        <PlaylistModal isPlaylistModalOpen={isPlaylistModalOpen} setIsPlaylistModalOpen={setIsPlaylistModalOpen}/>
+        <PlaylistModal
+          isPlaylistModalOpen={isPlaylistModalOpen}
+          setIsPlaylistModalOpen={setIsPlaylistModalOpen}
+        />
       </div>
       <div className="card-subtitle">by {user}</div>
       <div className="card-subtitle">{views} views</div>

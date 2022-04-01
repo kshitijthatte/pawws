@@ -39,7 +39,8 @@
   background-color: var(--secondary-hover);
 }
 
-.video-card .card-header .card-title {
+.video-card .card-header .card-title,
+.video-card .card-header .card-subtitle {
   padding: 0;
 }
 
@@ -106,26 +107,42 @@
   align-items: center;
   border: none;
   background-color: inherit;
-  padding-top: 0.5rem;
   cursor: pointer;
 }
 
 .modal-title {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 
 .modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
 
 .modal-actions {
   margin-top: 0;
 }
 
+.modal .divider {
+  margin-bottom: 0.5rem;
+}
+
+.modal .video-card-btn {
+  padding-left: 0;
+}
+
+.modal .input-group label {
+  margin-bottom: 0;
+}
+
+.modal .input-group > * {
+  margin-bottom: 0;
+}
+
 .modal-input-checkbox {
-  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .modal-input-checkbox label {
