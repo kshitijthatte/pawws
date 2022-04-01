@@ -1,4 +1,5 @@
 import { removePlaylistVideo } from "../../services/playlistServices";
+import { UPDATE_SINGLE_PLAYLIST } from "../../reducers/constant";
 
 export const removeVideoFromPlaylist = async (
   token,
@@ -10,7 +11,7 @@ export const removeVideoFromPlaylist = async (
     const response = await removePlaylistVideo(token, video, playlist);
     if (response.status === 200) {
       playlistDspatch({
-        type: "UPDATE_SINGLE_PLAYLIST",
+        type: UPDATE_SINGLE_PLAYLIST,
         payload: response.data.playlist,
       });
     }
