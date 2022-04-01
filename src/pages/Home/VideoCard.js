@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLikes } from "../../contexts/likesContext";
-import { isInPlaylist } from "../../helpers/isInPlaylist";
+import { isInPlaylist } from "../../helpers/playlistHelper";
 import { useAuth } from "../../contexts/authContext";
 import { useWatchlater } from "../../contexts/watchlaterContext";
 import PlaylistModal from "./PlaylistModal";
@@ -17,6 +17,7 @@ const VideoCard = ({ video }) => {
   } = useAuth();
   const { likedVideos, addToLikedVideos, removeLikedVideos } = useLikes();
   const { watchlater, addToWatchlater, removeFromWatchlater } = useWatchlater();
+
   const isInLikedPlaylist = isInPlaylist(video, likedVideos);
   const isInWatchlater = isInPlaylist(video, watchlater);
 
@@ -111,6 +112,7 @@ const VideoCard = ({ video }) => {
         <PlaylistModal
           isPlaylistModalOpen={isPlaylistModalOpen}
           setIsPlaylistModalOpen={setIsPlaylistModalOpen}
+          video={video}
         />
       </div>
       <div className="card-subtitle">by {user}</div>

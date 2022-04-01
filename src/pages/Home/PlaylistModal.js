@@ -2,14 +2,21 @@ import { useState } from "react";
 import { useAuth } from "../../contexts/authContext";
 import { usePlaylist } from "../../contexts/playlistContext";
 import { createNewPlaylist } from "../../helpers/playlistHelper";
+import PlaylistCheckbox from "./PlaylistCheckbox";
 
-const PlaylistModal = ({ isPlaylistModalOpen, setIsPlaylistModalOpen }) => {
+const PlaylistModal = ({
+  isPlaylistModalOpen,
+  setIsPlaylistModalOpen,
+  video,
+}) => {
   const [showCreateNewPlaylist, setShowCreateNewPlaylist] = useState(false);
   const {
     playlistState: { playlists },
     playlistDspatch,
   } = usePlaylist();
-  const { auth: { token } } = useAuth();
+  const {
+    auth: { token },
+  } = useAuth();
   const [playlistName, setPlaylistName] = useState("");
 
   return (
@@ -29,15 +36,11 @@ const PlaylistModal = ({ isPlaylistModalOpen, setIsPlaylistModalOpen }) => {
         </div>
         {playlists.length > 0 && <hr className="divider" />}
         {playlists.map(playlist => (
-          <div className="modal-input-checkbox" key={playlist._id}>
-            <input
-              type="checkbox"
-              id={playlist.title}
-              name="playlist"
-              value={playlist.title}
-            />
-            <label htmlFor={playlist.title}>{playlist.title}</label>
-          </div>
+          <PlaylistCheckbox
+            playlist={playlist}
+            key={playlist._id}
+            video={video}
+          />
         ))}
         <hr className="divider" />
         {showCreateNewPlaylist ? (

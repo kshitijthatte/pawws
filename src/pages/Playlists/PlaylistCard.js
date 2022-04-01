@@ -60,7 +60,10 @@ const PlaylistCard = ({ playlist }) => {
         ></div>
       )}
 
-      <Link className="btn btn-transparent btn-sm video-card-btn" to="/">
+      <Link
+        className="btn btn-transparent btn-sm video-card-btn"
+        to={`/playlists/${playlist._id}`}
+      >
         View Full Playlist
       </Link>
     </div>

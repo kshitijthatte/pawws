@@ -142,10 +142,22 @@
 }
 
 .modal-input-checkbox {
+  display: flex;
+  align-items: center;
   margin-bottom: 0.5rem;
+  cursor: pointer;
+  width: fit-content;
 }
 
-.modal-input-checkbox label {
+.modal-input-checkbox .checkbox-btn {
+  padding: 0;
+  color: var(--primary-color);
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-input-checkbox .label {
   margin-left: 0.5rem;
 }
 
