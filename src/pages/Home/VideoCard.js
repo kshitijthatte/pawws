@@ -1,20 +1,23 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useLikes } from "../../contexts/likesContext";
-import { isInPlaylist } from "../../helpers/isInPlaylist";
+import { isInPlaylist } from "../../helpers/playlistHelper";
 import { useAuth } from "../../contexts/authContext";
 import { useWatchlater } from "../../contexts/watchlaterContext";
-import { removeWatchlater } from "../../services/watchlaterServices";
+import PlaylistModal from "./PlaylistModal";
 
 const VideoCard = ({ video }) => {
   const { title, thumbnail, user, views } = video;
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isPlaylistModalOpen, setIsPlaylistModalOpen] = useState(false);
+
   const navigate = useNavigate();
   const {
     auth: { isAuthenticated },
   } = useAuth();
   const { likedVideos, addToLikedVideos, removeLikedVideos } = useLikes();
   const { watchlater, addToWatchlater, removeFromWatchlater } = useWatchlater();
+
   const isInLikedPlaylist = isInPlaylist(video, likedVideos);
   const isInWatchlater = isInPlaylist(video, watchlater);
 
@@ -28,20 +31,20 @@ const VideoCard = ({ video }) => {
         <div className="menu-dropdown">
           <button
             className="card-menu-icon material-icons"
-            onClick={() => setIsModalOpen(m => !m)}
+            onClick={() => setIsDropdownOpen(d => !d)}
           >
             more_vert
           </button>
           <div
             className="menu-dropdown-content"
-            style={{ display: isModalOpen ? "flex" : "none" }}
+            style={{ display: isDropdownOpen ? "flex" : "none" }}
           >
             {isInLikedPlaylist ? (
               <button
                 className="menu-dropdown-btn text-primary"
                 onClick={() => {
                   removeLikedVideos(video);
-                  setIsModalOpen(false);
+                  setIsDropdownOpen(false);
                 }}
               >
                 <span className="material-icons">thumb_up</span>
@@ -53,7 +56,7 @@ const VideoCard = ({ video }) => {
                 onClick={() => {
                   if (isAuthenticated) {
                     addToLikedVideos(video);
-                    setIsModalOpen(false);
+                    setIsDropdownOpen(false);
                   } else {
                     navigate("/login");
                   }
@@ -68,7 +71,7 @@ const VideoCard = ({ video }) => {
                 className="menu-dropdown-btn text-primary"
                 onClick={() => {
                   removeFromWatchlater(video);
-                  setIsModalOpen(false);
+                  setIsDropdownOpen(false);
                 }}
               >
                 <span className="material-icons">watch_later</span>
@@ -80,7 +83,7 @@ const VideoCard = ({ video }) => {
                 onClick={() => {
                   if (isAuthenticated) {
                     addToWatchlater(video);
-                    setIsModalOpen(false);
+                    setIsDropdownOpen(false);
                   } else {
                     navigate("/login");
                   }
@@ -90,13 +93,27 @@ const VideoCard = ({ video }) => {
                 Add to Watch Later
               </button>
             )}
-
-            <button className="menu-dropdown-btn">
+            <button
+              className="menu-dropdown-btn"
+              onClick={() => {
+                if (isAuthenticated) {
+                  setIsPlaylistModalOpen(true);
+                  setIsDropdownOpen(false);
+                } else {
+                  navigate("/login");
+                }
+              }}
+            >
               <span className="material-icons">playlist_add</span>
               Add to playlist
             </button>
           </div>
         </div>
+        <PlaylistModal
+          isPlaylistModalOpen={isPlaylistModalOpen}
+          setIsPlaylistModalOpen={setIsPlaylistModalOpen}
+          video={video}
+        />
       </div>
       <div className="card-subtitle">by {user}</div>
       <div className="card-subtitle">{views} views</div>

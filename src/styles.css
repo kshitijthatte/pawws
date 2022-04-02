@@ -14,9 +14,14 @@ body {
 .main {
   padding: 0.5rem 1rem 1rem 1.8rem;
 }
-.main a {
+a {
   color: inherit;
   text-decoration: inherit;
+}
+
+.divider {
+  border: none;
+  border-bottom: 1px solid var(--light-grey);
 }
 
 .drawer-frame {

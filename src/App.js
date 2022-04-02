@@ -3,16 +3,19 @@ import NavDrawer from "./components/NavDrawer";
 import AppRoutes from "./components/AppRoutes";
 import { LikesProvider } from "./contexts/likesContext";
 import { WatchlaterProvider } from "./contexts/watchlaterContext";
+import { PlaylistProvider } from "./contexts/playlistContext";
 
 function App() {
   return (
     <>
       <NavDrawer>
-        <LikesProvider>
-          <WatchlaterProvider>
-            <AppRoutes />
-          </WatchlaterProvider>
-        </LikesProvider>
+        <PlaylistProvider>
+          <LikesProvider>
+            <WatchlaterProvider>
+              <AppRoutes />
+            </WatchlaterProvider>
+          </LikesProvider>
+        </PlaylistProvider>
       </NavDrawer>
     </>
   );

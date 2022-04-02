@@ -39,7 +39,8 @@
   background-color: var(--secondary-hover);
 }
 
-.video-card .card-header .card-title {
+.video-card .card-header .card-title,
+.video-card .card-header .card-subtitle {
   padding: 0;
 }
 
@@ -99,6 +100,65 @@
 }
 .dropdown option {
   font-size: 1.2em;
+}
+
+.modal-btn {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.modal-title {
+  margin-bottom: 0;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.modal-actions {
+  margin-top: 0;
+}
+
+.modal .divider {
+  margin-bottom: 0.5rem;
+}
+
+.modal .video-card-btn {
+  padding-left: 0;
+}
+
+.modal .input-group label {
+  margin-bottom: 0;
+}
+
+.modal .input-group > * {
+  margin-bottom: 0;
+}
+
+.modal-input-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.modal-input-checkbox .checkbox-btn {
+  padding: 0;
+  color: var(--primary-color);
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-input-checkbox .label {
+  margin-left: 0.5rem;
 }
 
 @media only screen and (max-width: 900px) {

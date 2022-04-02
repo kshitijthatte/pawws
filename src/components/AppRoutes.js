@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Playlists from "../pages/Playlists";
+import SinglePlaylist from "../pages/SinglePlaylist";
 import LikedVideos from "../pages/LikedVideos";
 import WatchLater from "../pages/WatchLater";
 
@@ -15,6 +16,7 @@ const AppRoutes = () => {
       <Route path="/signup" element={<Signup />} />
       <Route path="/" element={<PrivateRoutes />}>
         <Route path="/playlists" element={<Playlists />} />
+        <Route path="/playlists/:playlistID" element={<SinglePlaylist />} />
         <Route path="/liked" element={<LikedVideos />} />
         <Route path="/watchlater" element={<WatchLater />} />
       </Route>
