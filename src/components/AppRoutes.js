@@ -8,6 +8,7 @@ import SinglePlaylist from "../pages/SinglePlaylist";
 import LikedVideos from "../pages/LikedVideos";
 import WatchLater from "../pages/WatchLater";
 import SingleVideo from "../pages/SingleVideo";
+import History from "../pages/History";
 
 const AppRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AppRoutes = () => {
         <Route path="/playlists/:playlistID" element={<SinglePlaylist />} />
         <Route path="/liked" element={<LikedVideos />} />
         <Route path="/watchlater" element={<WatchLater />} />
+        <Route path="/history" element={<History />} />
       </Route>
     </Routes>
   );
