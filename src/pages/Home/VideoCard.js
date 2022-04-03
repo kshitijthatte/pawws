@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLikes } from "../../contexts/likesContext";
 import { isInPlaylist } from "../../helpers/playlistHelper";
 import { useAuth } from "../../contexts/authContext";
@@ -7,7 +7,7 @@ import { useWatchlater } from "../../contexts/watchlaterContext";
 import PlaylistModal from "./PlaylistModal";
 
 const VideoCard = ({ video }) => {
-  const { title, thumbnail, user, views } = video;
+  const { _id, title, thumbnail, user, views } = video;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isPlaylistModalOpen, setIsPlaylistModalOpen] = useState(false);
 
@@ -23,11 +23,15 @@ const VideoCard = ({ video }) => {
 
   return (
     <div className="card video-card">
-      <img className="card-img" src={thumbnail} />
+      <Link className="card-img-link" to={`/watch/${_id}`}>
+        <img className="card-img" src={thumbnail} />
+      </Link>
       <div className="card-header">
-        <div className="card-title" title={title}>
-          {title}
-        </div>
+        <Link to={`/watch/${_id}`}>
+          <div className="card-title" title={title}>
+            {title}
+          </div>
+        </Link>
         <div className="menu-dropdown">
           <button
             className="card-menu-icon material-icons"
@@ -115,8 +119,10 @@ const VideoCard = ({ video }) => {
           video={video}
         />
       </div>
-      <div className="card-subtitle">by {user}</div>
-      <div className="card-subtitle">{views} views</div>
+      <Link to={`/watch/${_id}`}>
+        <div className="card-subtitle">by {user}</div>
+        <div className="card-subtitle">{views} views</div>
+      </Link>
     </div>
   );
 };

@@ -23,7 +23,8 @@
   overflow: hidden;
 }
 
-.video-card .card-img {
+.video-card .card-img,
+.video-card .card-img .card-img-link {
   height: 100%;
 }
 
