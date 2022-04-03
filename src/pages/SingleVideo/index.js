@@ -1,11 +1,19 @@
 import axios from "axios";
 import "./styles.css";
-import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { isInPlaylist } from "../../helpers/playlistHelper";
+import { useAuth } from "../../contexts/authContext";
+import { useUserHistory } from "../../contexts/historyContext";
 
 const SingleVideo = () => {
   const { videoID } = useParams();
   const [video, setVideo] = useState([]);
+  const { history, addToHistory } = useUserHistory();
+  const {
+    auth: { isAuthenticated },
+  } = useAuth();
+
   useEffect(() => {
     (async () => {
       try {
@@ -13,16 +21,26 @@ const SingleVideo = () => {
         if (response.status === 200) {
           const data = response.data.video;
           setVideo(data);
+          if (isAuthenticated && !isInPlaylist(data, history)) {
+            addToHistory(data);
+          }
         }
       } catch (error) {
         console.error("ERROR", error);
       }
     })();
   }, []);
+
   const { title, thumbnail, src, description, views, user } = video;
   return (
     <div className="card video-player-card">
-      <video src={src} className="card-img" poster={thumbnail} controls autoPlay>
+      <video
+        src={src}
+        className="card-img"
+        poster={thumbnail}
+        controls
+        autoPlay
+      >
         Sorry, your browser doesn't support embedded videos.
       </video>
 
