@@ -29,7 +29,7 @@
   height: 100%;
 }
 
-.video-card .card-header .card-menu-icon {
+.card-menu-icon {
   padding: 0.2rem;
   border: none;
   border-radius: 100%;
@@ -37,7 +37,7 @@
   background-color: inherit;
 }
 
-.video-card .card-header .card-menu-icon:hover {
+.card-menu-icon:hover {
   background-color: var(--secondary-hover);
 }
 
