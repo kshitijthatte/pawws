@@ -1,0 +1,19 @@
+.video-player-card {
+  min-width: 35rem;
+  max-width: 60%;
+}
+
+.video-player-card .card-actions .card-subtitle {
+  padding-left: 0.5rem;
+}
+
+.video-player-card .divider {
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 650px) {
+  .video-player-card {
+    min-width: 100%;
+  }
+}

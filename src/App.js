@@ -4,6 +4,7 @@ import AppRoutes from "./components/AppRoutes";
 import { LikesProvider } from "./contexts/likesContext";
 import { WatchlaterProvider } from "./contexts/watchlaterContext";
 import { PlaylistProvider } from "./contexts/playlistContext";
+import { HistoryProvider } from "./contexts/historyContext";
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
         <PlaylistProvider>
           <LikesProvider>
             <WatchlaterProvider>
-              <AppRoutes />
+              <HistoryProvider>
+                <AppRoutes />
+              </HistoryProvider>
             </WatchlaterProvider>
           </LikesProvider>
         </PlaylistProvider>

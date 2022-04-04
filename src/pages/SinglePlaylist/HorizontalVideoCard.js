@@ -1,4 +1,5 @@
 import { useAuth } from "../../contexts/authContext";
+import { useUserHistory } from "../../contexts/historyContext";
 import { useLikes } from "../../contexts/likesContext";
 import { usePlaylist } from "../../contexts/playlistContext";
 import { useWatchlater } from "../../contexts/watchlaterContext";
@@ -8,6 +9,7 @@ const HorizontalVideoCard = ({ playlistTitle, video, playlist }) => {
   const { title, thumbnail, user } = video;
   const { removeLikedVideos } = useLikes();
   const { removeFromWatchlater } = useWatchlater();
+  const { removeFromHistory } = useUserHistory();
   const {
     auth: { token },
   } = useAuth();
@@ -19,6 +21,8 @@ const HorizontalVideoCard = ({ playlistTitle, video, playlist }) => {
         return removeLikedVideos(video);
       case "Watch Later":
         return removeFromWatchlater(video);
+      case "History":
+        return removeFromHistory(video);
       default:
         return removeVideoFromPlaylist(token, video, playlist, playlistDspatch);
     }

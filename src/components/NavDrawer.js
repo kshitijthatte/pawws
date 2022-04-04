@@ -113,7 +113,11 @@ const NavDrawer = ({ children }) => {
                 <span className="material-icons">watch_later</span>
                 Watch Later
               </NavLink>
-              <NavLink className="side-nav-item" to="/">
+              <NavLink className={({ isActive }) =>
+                  isActive
+                    ? "side-nav-item side-nav-item-active"
+                    : "side-nav-item"
+                } to="/history">
                 <span className="material-icons">history</span>
                 History
               </NavLink>
