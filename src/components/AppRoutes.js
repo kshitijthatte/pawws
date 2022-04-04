@@ -9,6 +9,7 @@ import LikedVideos from "../pages/LikedVideos";
 import WatchLater from "../pages/WatchLater";
 import SingleVideo from "../pages/SingleVideo";
 import History from "../pages/History";
+import NotFound from "../pages/404";
 
 const AppRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const AppRoutes = () => {
         <Route path="/liked" element={<LikedVideos />} />
         <Route path="/watchlater" element={<WatchLater />} />
         <Route path="/history" element={<History />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
