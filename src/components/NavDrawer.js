@@ -1,4 +1,5 @@
-import { React, useState } from "react";
+import toast from "react-hot-toast";
+import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 import { logoutService } from "../services/authServices";
@@ -31,9 +32,6 @@ const NavDrawer = ({ children }) => {
           </Link>
         </div>
         <div className="nav-section nav-section-right">
-          <Link className="btn btn-primary btn-sm btn-icon" to="/">
-            <span className="material-icons"> notifications </span>
-          </Link>
           {!isAuthenticated && (
             <NavLink to="/login" className="btn btn-primary btn-sm btn-icon">
               <span className="material-icons"> person </span>
@@ -56,6 +54,7 @@ const NavDrawer = ({ children }) => {
                     user: "",
                     token: "",
                   });
+                  toast.success("Successfully signed out");
                   navigate("/");
                 }}
               >
@@ -113,11 +112,14 @@ const NavDrawer = ({ children }) => {
                 <span className="material-icons">watch_later</span>
                 Watch Later
               </NavLink>
-              <NavLink className={({ isActive }) =>
+              <NavLink
+                className={({ isActive }) =>
                   isActive
                     ? "side-nav-item side-nav-item-active"
                     : "side-nav-item"
-                } to="/history">
+                }
+                to="/history"
+              >
                 <span className="material-icons">history</span>
                 History
               </NavLink>

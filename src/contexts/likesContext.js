@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext, useContext } from "react";
+import toast from "react-hot-toast";
 import { addLikes, getLikes, removeLikes } from "../services/likesServices";
 import { useAuth } from "./authContext";
 
@@ -34,8 +35,10 @@ const LikesProvider = ({ children }) => {
     try {
       const response = await addLikes(token, video);
       setLikedVideos(response.data.likes);
+      toast.success("Video Liked");
     } catch (error) {
       console.error("ERROR", error);
+      toast.error("Error");
       return error;
     }
   };
@@ -44,8 +47,10 @@ const LikesProvider = ({ children }) => {
     try {
       const response = await removeLikes(token, video);
       setLikedVideos(response.data.likes);
+      toast("Removed from likes");
     } catch (error) {
       console.error("ERROR", error);
+      toast.error("Error");
       return error;
     }
   };

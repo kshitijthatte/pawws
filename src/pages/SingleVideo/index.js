@@ -8,6 +8,7 @@ import { useUserHistory } from "../../contexts/historyContext";
 import { useLikes } from "../../contexts/likesContext";
 import PlaylistModal from "../Home/PlaylistModal";
 import { useWatchlater } from "../../contexts/watchlaterContext";
+import toast from "react-hot-toast";
 
 const SingleVideo = () => {
   const { videoID } = useParams();
@@ -26,16 +27,21 @@ const SingleVideo = () => {
 
   useEffect(() => {
     (async () => {
+      const videoLoader = toast.loading("Loading...");
       try {
         const response = await axios.get(`/api/video/${videoID}`);
         if (response.status === 200) {
           const data = response.data.video;
           setVideo(data);
+          toast.dismiss(videoLoader);
           if (isAuthenticated && !isInPlaylist(data, history)) {
             addToHistory(data);
           }
         }
       } catch (error) {
+        toast.error("Video unavailable", {
+          id: videoLoader,
+        });
         console.error("ERROR", error);
       }
     })();
@@ -62,7 +68,7 @@ const SingleVideo = () => {
             className={`btn card-icon material-icons ${
               isInLikedPlaylist && "text-primary"
             }`}
-            title='I like this'
+            title="I like this"
             onClick={() =>
               isInLikedPlaylist
                 ? removeLikedVideos(video)
@@ -77,7 +83,7 @@ const SingleVideo = () => {
             className={`btn card-icon material-icons ${
               isInWatchlater && "text-primary"
             }`}
-            title='Add to Watch Later'
+            title="Add to Watch Later"
             onClick={() =>
               isInWatchlater
                 ? removeFromWatchlater(video)
@@ -90,7 +96,7 @@ const SingleVideo = () => {
           </button>
           <button
             className="btn card-icon material-icons"
-            title='Save to Playlist'
+            title="Save to Playlist"
             onClick={() =>
               isAuthenticated
                 ? setIsPlaylistModalOpen(true)
@@ -104,7 +110,9 @@ const SingleVideo = () => {
             setIsPlaylistModalOpen={setIsPlaylistModalOpen}
             video={video}
           />
-          <button className="btn card-icon material-icons" title="Share">share</button>
+          <button className="btn card-icon material-icons" title="Share">
+            share
+          </button>
         </div>
       </div>
       <hr className="divider description-divider" />
