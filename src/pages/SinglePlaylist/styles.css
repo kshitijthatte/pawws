@@ -15,3 +15,7 @@
 .playist-video-container {
   padding-top: 0.5rem;
 }
+
+.horizontal-video-card .card-img-link {
+  height: 7rem;
+}

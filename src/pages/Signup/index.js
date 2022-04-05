@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
@@ -43,12 +44,14 @@ const Signup = () => {
             token: response.data.encodedToken,
           }));
           navigate(`/`);
+          toast.success(`Welcome, ${response.data.createdUser.firstName}`);
         }
       } else {
         setError("Passwords do not match.");
       }
     } catch (error) {
       console.log(error);
+      toast.error("Error");
       setError(error.response.data.errors[0]);
     }
   };

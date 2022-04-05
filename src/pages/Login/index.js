@@ -1,4 +1,5 @@
 import "./styles.css";
+import toast from "react-hot-toast";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
@@ -38,10 +39,12 @@ const Login = () => {
           user: response.data.foundUser,
           token: response.data.encodedToken,
         }));
+        toast.success(`Welcome, ${response.data.foundUser.firstName}`);
         navigate(`/`);
       }
     } catch (error) {
       console.log(error);
+      toast.error("Error");
       setError(error.response.data.errors[0]);
     }
   };

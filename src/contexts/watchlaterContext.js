@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext, useContext } from "react";
+import toast from "react-hot-toast";
 import {
   addWatchlater,
   getWatchlater,
@@ -38,8 +39,10 @@ const WatchlaterProvider = ({ children }) => {
     try {
       const response = await addWatchlater(token, video);
       setWatchlater(response.data.watchlater);
+      toast.success("Video added to Watch Later");
     } catch (error) {
       console.error("ERROR", error);
+      toast.error("Error");
       return error;
     }
   };
@@ -48,8 +51,10 @@ const WatchlaterProvider = ({ children }) => {
     try {
       const response = await removeWatchlater(token, video);
       setWatchlater(response.data.watchlater);
+      toast("Video removed from Watch Later");
     } catch (error) {
       console.error("ERROR", error);
+      toast.error("Error");
       return error;
     }
   };

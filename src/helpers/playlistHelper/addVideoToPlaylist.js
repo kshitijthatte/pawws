@@ -1,5 +1,6 @@
 import { addPlaylistVideo } from "../../services/playlistServices";
 import { UPDATE_SINGLE_PLAYLIST } from "../../reducers/constant";
+import toast from "react-hot-toast";
 
 export const addVideoToPlaylist = async (
   token,
@@ -14,9 +15,11 @@ export const addVideoToPlaylist = async (
         type: UPDATE_SINGLE_PLAYLIST,
         payload: response.data.playlist,
       });
+      toast.success(`Video added to ${playlist.title}`);
     }
   } catch (error) {
     console.error("ERROR", error);
+    toast.error("Error");
     return error;
   }
 };

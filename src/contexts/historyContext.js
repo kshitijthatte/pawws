@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext, useContext } from "react";
+import toast from "react-hot-toast";
 import {
   addHistory,
   getHistory,
@@ -49,18 +50,22 @@ const HistoryProvider = ({ children }) => {
     try {
       const response = await removeHistory(token, video);
       setHistory(response.data.history);
+      toast("Removed from history");
     } catch (error) {
       console.error("ERROR", error);
+      toast.error("Error");
       return error;
     }
   };
 
-  const clearAllHistory = async video => {
+  const clearAllHistory = async () => {
     try {
       const response = await removeAllHistory(token);
       setHistory(response.data.history);
+      toast("Cleared All History");
     } catch (error) {
       console.error("ERROR", error);
+      toast.error("Error");
       return error;
     }
   };

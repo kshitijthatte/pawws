@@ -1,31 +1,47 @@
 import axios from "axios";
 import "./styles.css";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { isInPlaylist } from "../../helpers/playlistHelper";
 import { useAuth } from "../../contexts/authContext";
 import { useUserHistory } from "../../contexts/historyContext";
+import { useLikes } from "../../contexts/likesContext";
+import PlaylistModal from "../Home/PlaylistModal";
+import { useWatchlater } from "../../contexts/watchlaterContext";
+import toast from "react-hot-toast";
 
 const SingleVideo = () => {
   const { videoID } = useParams();
+  const navigate = useNavigate();
   const [video, setVideo] = useState([]);
+  const [isPlaylistModalOpen, setIsPlaylistModalOpen] = useState(false);
   const { history, addToHistory } = useUserHistory();
   const {
     auth: { isAuthenticated },
   } = useAuth();
+  const { likedVideos, addToLikedVideos, removeLikedVideos } = useLikes();
+  const { watchlater, addToWatchlater, removeFromWatchlater } = useWatchlater();
+
+  const isInLikedPlaylist = isInPlaylist(video, likedVideos);
+  const isInWatchlater = isInPlaylist(video, watchlater);
 
   useEffect(() => {
     (async () => {
+      const videoLoader = toast.loading("Loading...");
       try {
         const response = await axios.get(`/api/video/${videoID}`);
         if (response.status === 200) {
           const data = response.data.video;
           setVideo(data);
+          toast.dismiss(videoLoader);
           if (isAuthenticated && !isInPlaylist(data, history)) {
             addToHistory(data);
           }
         }
       } catch (error) {
+        toast.error("Video unavailable", {
+          id: videoLoader,
+        });
         console.error("ERROR", error);
       }
     })();
@@ -48,12 +64,58 @@ const SingleVideo = () => {
       <div className="card-actions">
         <div className="card-subtitle">{views} views</div>
         <div className="card-actions-right">
-          <button className="btn card-icon material-icons">thumb_up</button>
-          <button className="btn card-icon material-icons">playlist_add</button>
-          <button className="btn card-icon material-icons">share</button>
+          <button
+            className={`btn card-icon material-icons ${
+              isInLikedPlaylist && "text-primary"
+            }`}
+            title="I like this"
+            onClick={() =>
+              isInLikedPlaylist
+                ? removeLikedVideos(video)
+                : isAuthenticated
+                ? addToLikedVideos(video)
+                : navigate("/login")
+            }
+          >
+            thumb_up
+          </button>
+          <button
+            className={`btn card-icon material-icons ${
+              isInWatchlater && "text-primary"
+            }`}
+            title="Add to Watch Later"
+            onClick={() =>
+              isInWatchlater
+                ? removeFromWatchlater(video)
+                : isAuthenticated
+                ? addToWatchlater(video)
+                : navigate("/login")
+            }
+          >
+            watch_later
+          </button>
+          <button
+            className="btn card-icon material-icons"
+            title="Save to Playlist"
+            onClick={() =>
+              isAuthenticated
+                ? setIsPlaylistModalOpen(true)
+                : navigate("/login")
+            }
+          >
+            playlist_add
+          </button>
+          <PlaylistModal
+            isPlaylistModalOpen={isPlaylistModalOpen}
+            setIsPlaylistModalOpen={setIsPlaylistModalOpen}
+            video={video}
+          />
+          <button className="btn card-icon material-icons" title="Share">
+            share
+          </button>
         </div>
       </div>
-      <hr className="divider" />
+      <hr className="divider description-divider" />
       <div className="avatar-container card-subtitle">
         <img
           className="avatar"
