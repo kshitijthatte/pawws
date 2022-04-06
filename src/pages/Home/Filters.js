@@ -69,6 +69,7 @@ const Filters = ({ filtersState, filtersDispatch }) => {
           <option value="POPULARITY">Popularity</option>
           <option value="LATEST">Latest</option>
           <option value="OLDEST">Oldest</option>
+          <option value="VIEWS">Most Viewed</option>
         </select>
       </div>
     </div>

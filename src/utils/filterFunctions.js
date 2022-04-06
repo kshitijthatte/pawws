@@ -16,6 +16,11 @@ const getSortedVideos = (videos, sortBy) => {
       (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
     );
 
+  if (sortBy === "VIEWS")
+    return [...videos].sort(
+      (a, b) => b.views - a.views
+    );
+
   return videos;
 };
 
