@@ -1,4 +1,4 @@
-import { SORT_BY, CATEGORY_CHANGE } from "./constant";
+import { SORT_BY, CATEGORY_CHANGE, SEARCH } from "./constant";
 
 export const filterReducer = (state, action) => {
   switch (action.type) {
@@ -7,6 +7,9 @@ export const filterReducer = (state, action) => {
 
     case CATEGORY_CHANGE:
       return { ...state, category: action.payload };
+
+    case SEARCH:
+      return { ...state, searchQuery: action.payload };
 
     default:
       throw new Error();

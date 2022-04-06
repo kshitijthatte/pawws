@@ -7,6 +7,7 @@ import "./styles.css";
 import { filterReducer } from "../../reducers/filtersReducer";
 import {
   getCategoryFilteredVideos,
+  getSearchedVideos,
   getSortedVideos,
 } from "../../utils/filterFunctions";
 
@@ -35,17 +36,19 @@ const Home = () => {
   const [filtersState, filtersDispatch] = useReducer(filterReducer, {
     sortBy: "POPULARITY",
     category: "ALL",
+    searchQuery: '',
   });
-  const { sortBy, category } = filtersState;
+  const { sortBy, category, searchQuery } = filtersState;
 
   const categoryfilteredVideos = getCategoryFilteredVideos(videos, category);
   const sortedVideos = getSortedVideos(categoryfilteredVideos, sortBy);
+  const searchedVideos = getSearchedVideos(sortedVideos, searchQuery);
 
   return (
     <>
       <Filters filtersState={filtersState} filtersDispatch={filtersDispatch} />
       <div className="grid grid-col-4 video-grid">
-        {sortedVideos.map(video => (
+        {searchedVideos.map(video => (
           <VideoCard key={video.id} video={video} />
         ))}
       </div>

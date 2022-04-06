@@ -19,4 +19,9 @@ const getSortedVideos = (videos, sortBy) => {
   return videos;
 };
 
-export { getSortedVideos, getCategoryFilteredVideos };
+const getSearchedVideos = (videos, searchQuery) => {
+  return videos.filter(({ title }) =>
+    title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+};
+export { getSortedVideos, getCategoryFilteredVideos, getSearchedVideos };

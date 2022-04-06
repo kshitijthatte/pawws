@@ -1,6 +1,8 @@
-import { CATEGORY_CHANGE, SORT_BY } from "../../reducers/constant";
+import { useState } from "react";
+import { CATEGORY_CHANGE, SORT_BY, SEARCH } from "../../reducers/constant";
 
 const Filters = ({ filtersState, filtersDispatch }) => {
+  const [searchInput, setSearchInput] = useState("");
   const { category } = filtersState;
 
   const isBtnActive = btnTitle =>
@@ -42,9 +44,15 @@ const Filters = ({ filtersState, filtersDispatch }) => {
           id="search"
           name="search"
           placeholder="Search Videos..."
-          required
+          value={searchInput}
+          onChange={e => {
+            setSearchInput(e.target.value);
+            filtersDispatch({ type: SEARCH, payload: e.target.value });
+          }}
         />
-        <button className="btn btn-transparent btn-sm video-card-btn">
+        <button
+          className="btn btn-transparent btn-sm video-card-btn"
+        >
           <span className="material-icons">search</span>
         </button>
       </div>
