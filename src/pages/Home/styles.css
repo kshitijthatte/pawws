@@ -85,11 +85,32 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background-color: var(--white);
+  padding-top: 0.5rem;
+  z-index: 2;
 }
 
 .category-filter {
   display: flex;
   gap: 0.5rem;
+}
+
+.search-box {
+  display: flex;
+  align-items: baseline;
+}
+
+.search-box .input {
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.search-box .input:focus {
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .dropdown {
@@ -99,6 +120,7 @@
   border-radius: 4px;
   color: var(--primary-color);
   cursor: pointer;
+  outline: none;
 }
 .dropdown option {
   font-size: 1.2em;

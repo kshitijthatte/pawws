@@ -1,12 +1,18 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import VideoCard from "./VideoCard";
 import Filters from "./Filters";
 import "./styles.css";
+import { filterReducer } from "../../reducers/filtersReducer";
+import {
+  getCategoryFilteredVideos,
+  getSortedVideos,
+} from "../../utils/filterFunctions";
 
 const Home = () => {
   const [videos, setVideos] = useState([]);
+
   useEffect(() => {
     (async () => {
       const videosLoader = toast.loading("Loading...");
@@ -26,11 +32,20 @@ const Home = () => {
     })();
   }, []);
 
+  const [filtersState, filtersDispatch] = useReducer(filterReducer, {
+    sortBy: "POPULARITY",
+    category: "ALL",
+  });
+  const { sortBy, category } = filtersState;
+
+  const categoryfilteredVideos = getCategoryFilteredVideos(videos, category);
+  const sortedVideos = getSortedVideos(categoryfilteredVideos, sortBy);
+
   return (
     <>
-      <Filters />
+      <Filters filtersState={filtersState} filtersDispatch={filtersDispatch} />
       <div className="grid grid-col-4 video-grid">
-        {videos.map(video => (
+        {sortedVideos.map(video => (
           <VideoCard key={video.id} video={video} />
         ))}
       </div>
