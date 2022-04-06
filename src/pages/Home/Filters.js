@@ -1,7 +1,7 @@
 import { CATEGORY_CHANGE, SORT_BY } from "../../reducers/constant";
 
 const Filters = ({ filtersState, filtersDispatch }) => {
-  const { sortBy, category } = filtersState;
+  const { category } = filtersState;
 
   const isBtnActive = btnTitle =>
     category === btnTitle ? "btn-primary" : "outline-primary";
@@ -50,10 +50,17 @@ const Filters = ({ filtersState, filtersDispatch }) => {
       </div>
 
       <div>
-        <select name="sortBy" id="sortBy" className="dropdown">
-          <option value="popularity">Popularity</option>
-          <option value="latest">Latest</option>
-          <option value="oldest">Oldest</option>
+        <select
+          name="sortBy"
+          id="sortBy"
+          className="dropdown"
+          onChange={e =>
+            filtersDispatch({ type: SORT_BY, payload: e.target.value })
+          }
+        >
+          <option value="POPULARITY">Popularity</option>
+          <option value="LATEST">Latest</option>
+          <option value="OLDEST">Oldest</option>
         </select>
       </div>
     </div>

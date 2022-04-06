@@ -1,7 +1,6 @@
 .video-grid {
   gap: 1rem;
   height: initial;
-  padding-top: 0.5rem;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 .video-card {
@@ -88,7 +87,7 @@
   position: sticky;
   top: 0;
   background-color: var(--white);
-  padding-top: 0.5rem;
+  padding: 0.5rem 0;
   z-index: 2;
 }
 
