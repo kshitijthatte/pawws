@@ -33,9 +33,9 @@ import {
   removeVideoFromPlaylistHandler,
 } from "./backend/controllers/PlaylistController";
 import {
-  getWatchlaterVideosHandler,
-  addVideoToWatchlaterHandler,
-  removeVideoFromWatchlaterHandler
+  addItemToWatchLaterVideos,
+  getWatchLaterVideosHandler,
+  removeItemFromWatchLaterVideos,
 } from "./backend/controllers/WatchlaterController";
 import { users } from "./backend/db/users";
 export function makeServer({ environment = "development" } = {}) {
@@ -94,6 +94,14 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/user/likes", addItemToLikedVideos.bind(this));
       this.delete("/user/likes/:videoId", removeItemFromLikedVideos.bind(this));
 
+      // watch later routes (private)
+      this.get("/user/watchlater", getWatchLaterVideosHandler.bind(this));
+      this.post("/user/watchlater", addItemToWatchLaterVideos.bind(this));
+      this.delete(
+        "/user/watchlater/:videoId",
+        removeItemFromWatchLaterVideos.bind(this)
+      );
+
       // playlist routes (private)
       this.get("/user/playlists", getAllPlaylistsHandler.bind(this));
       this.post("/user/playlists", addNewPlaylistHandler.bind(this));
@@ -123,14 +131,6 @@ export function makeServer({ environment = "development" } = {}) {
         removeVideoFromHistoryHandler.bind(this)
       );
       this.delete("/user/history/all", clearHistoryHandler.bind(this));
-
-      // watchLater routes (private)
-      this.get("/user/watchlater", getWatchlaterVideosHandler.bind(this));
-      this.post("/user/watchlater", addVideoToWatchlaterHandler.bind(this));
-      this.delete(
-        "/user/watchlater/:videoId",
-        removeVideoFromWatchlaterHandler.bind(this)
-      );
     },
   });
 }
