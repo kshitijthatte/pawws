@@ -47,7 +47,8 @@ const SingleVideo = () => {
     })();
   }, []);
 
-  const { title, thumbnail, src, description, views, user } = video;
+  const { title, createdAt, thumbnail, src, description, views, user } = video;
+
   return (
     <div className="card video-player-card">
       <video
@@ -62,7 +63,7 @@ const SingleVideo = () => {
 
       <div className="card-title">{title}</div>
       <div className="card-actions">
-        <div className="card-subtitle">{views} views</div>
+        <div className="card-subtitle">{views} views &#8226; {createdAt?.split("T")[0]}</div>
         <div className="card-actions-right">
           <button
             className={`btn card-icon material-icons ${

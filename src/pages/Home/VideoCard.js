@@ -7,7 +7,7 @@ import { useWatchlater } from "../../contexts/watchlaterContext";
 import PlaylistModal from "./PlaylistModal";
 
 const VideoCard = ({ video }) => {
-  const { _id, title, thumbnail, user, views } = video;
+  const { _id, createdAt, title, thumbnail, user, views } = video;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isPlaylistModalOpen, setIsPlaylistModalOpen] = useState(false);
 
@@ -20,6 +20,9 @@ const VideoCard = ({ video }) => {
 
   const isInLikedPlaylist = isInPlaylist(video, likedVideos);
   const isInWatchlater = isInPlaylist(video, watchlater);
+
+  const formatViews = views =>
+    views >= 1000 ? `${Math.round((views / 1000) * 10) / 10}K` : views;
 
   return (
     <div className="card video-card">
@@ -121,7 +124,9 @@ const VideoCard = ({ video }) => {
       </div>
       <Link to={`/watch/${_id}`}>
         <div className="card-subtitle">by {user}</div>
-        <div className="card-subtitle">{views} views</div>
+        <div className="card-subtitle" title={`${views} views`}>
+          {formatViews(views)} views &#8226; {createdAt.split("T")[0]}
+        </div>
       </Link>
     </div>
   );
